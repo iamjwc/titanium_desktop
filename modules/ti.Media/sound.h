@@ -29,6 +29,7 @@ namespace ti
 		void IsPlaying(const ValueList& args, KValueRef result);
 		void IsPaused(const ValueList& args, KValueRef result);
 		void SetOnComplete(const ValueList& args, KValueRef result);
+		void GetUrl(const ValueList& args, KValueRef result);
 
 		void Play();
 		void Pause();
@@ -44,6 +45,7 @@ namespace ti
 		void Load();
 		void Unload();
 		void SoundCompletedIteration();
+    std::string GetUrl();
 
 		virtual void LoadImpl() = 0;
 		virtual void UnloadImpl() = 0;

@@ -53,6 +53,12 @@ namespace ti
 		this->SetMethod("getVolume", &Sound::GetVolume);
 
 		/**
+		 * @tiapi(method=True,name=Media.Sound.getUrl,since=0.8)
+		 * @tiresult[String] The url of the sound file being played.
+		 */
+		this->SetMethod("getUrl", &Sound::GetUrl);
+
+		/**
 		 * @tiapi(method=True,name=Media.Sound.setLooping,since=0.2)
 		 * Set whether or not this sound should loop.
 		 * @tiarg[Boolean, looping] True if the sound should loop, false otherwise.
@@ -121,6 +127,12 @@ namespace ti
 	void Sound::GetVolume(const ValueList& args, KValueRef result)
 	{
 		result->SetDouble(this->GetVolume());
+	}
+
+	void Sound::GetUrl(const ValueList& args, KValueRef result)
+	{
+    std::string url = this->GetUrl();
+		result->SetString(url);
 	}
 
 	void Sound::SetLooping(const ValueList& args, KValueRef result)
@@ -200,6 +212,11 @@ namespace ti
 	{
 		return this->GetVolumeImpl();
 	}
+
+  std::string Sound::GetUrl()
+  {
+    return this->url;
+  }
 
 	void Sound::SetLooping(bool newLooping)
 	{
